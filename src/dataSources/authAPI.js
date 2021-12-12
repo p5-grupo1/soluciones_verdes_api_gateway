@@ -16,6 +16,10 @@ class AuthAPI extends RESTDataSource {
         return await this.get(`/user/${userId}/`);
     }
 
+    async ByUsername(username){
+        return await this.get("/userlist/?username="+username);
+    }
+
     async updateUser(user){
         user = new Object(JSON.parse(JSON.stringify(user)));
         let userId = user.id;

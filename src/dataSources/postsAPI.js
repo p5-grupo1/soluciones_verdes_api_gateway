@@ -30,14 +30,22 @@ class PostAPI extends RESTDataSource {
         return await this.get(`/filterposts/price-${precio}`);
     }
 
-    async postCreate(post, username){
-        post = new Object(JSON.parse(JSON.stringify(post)));
-        return await this.post(`/user/${username}/createposts`, post);
-
+    async RecipientCiudad(){
+        return await this.get('/recipient/ciudad');
     }
-    async postUpdateInput(post, username){
+
+    async RecipientPrecio(){
+        return await this.get('/recipient/precios');
+    }
+
+    async postCreate(post){
         post = new Object(JSON.parse(JSON.stringify(post)));
-        return await this.put(`/user/${username}/updatepost`, post);
+        return await this.post(`/user/createposts`, post);
+    }
+
+    async postUpdateInput(post){
+        post = new Object(JSON.parse(JSON.stringify(post)));
+        return await this.put(`/user/updatepost`, post);
     }
     
     async postDelete(postId){

@@ -42,6 +42,15 @@ const authTypes = gql `
         telefono        :String
     }
 
+    type UserPost{
+        username        :String
+        nombre          :String
+        email           :String
+        descripcion     :String
+        ciudad          :String
+        telefono        :String
+    }
+
     input UserUpdate{
         id              :Int!
         username        :String
@@ -56,6 +65,7 @@ const authTypes = gql `
 
     type Query {
         userDetailById(userId:Int!):UserDetail!
+        userByUsername(username:String!):[UserPost]
     }
 
     type Mutation {
