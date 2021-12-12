@@ -2,9 +2,21 @@
 const userResolver = {
 
     Query: {
-        userDetailById: async (_, {userId}, { dataSources, userIdToken }) => {
-            return await dataSources.authAPI.getUser(userId);
+        userDetailById: async (_, {userId}, { dataSources, userIdToken}) => {
+            usernameToken = (await dataSources.authAPI.getUser(userIdToken)).username;
+            const info    = await dataSources.authAPI.getUser(userId);
+            username      = info.username;
+            if(username == usernameToken)
+                return await dataSources.authAPI.getUser(userId);
+            else
+                null;     
+        },
+
+        userByUsername: async (_, {username}, {dataSources, userIdToken}) => {
+            usernameToken = (await dataSources.authAPI.getUser(userIdToken)).username;
+            return await dataSources.authAPI.ByUsername(username);
         }
+
     },
 
     Mutation: {

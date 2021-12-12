@@ -2,29 +2,37 @@ const PostResolver = {
 
     Query: {
         
-        postByAll: async(_, {}, {dataSources} ) =>{
+        postByAll: async(_, {}, {dataSources, userIdToken} ) =>{
             return await dataSources.postAPI.postByAll();
         },
 
-        postById: async(_, {idPost}, {dataSources}) =>{
+        postById: async(_, {idPost}, {dataSources, userIdToken}) =>{
             return await dataSources.postAPI.postById(idPost);
         },
 
-        postByUsername: async(_, {username}, { dataSources }) =>{
+        postByUsername: async(_, {username}, { dataSources, userIdToken }) =>{
             return await dataSources.postAPI.postByUsername(username);
         },
 
-        postByArea: async(_, {area}, {dataSources}) =>{
+        postByArea: async(_, {area}, {dataSources, userIdToken}) =>{
             return await dataSources.postAPI.postByArea(area);
         },
 
-        postByLugar: async(_, {ciudad}, {dataSources}) =>{
+        postByLugar: async(_, {ciudad}, {dataSources, userIdToken}) =>{
             return await dataSources.postAPI.postByLugar(ciudad);
         },
 
-        postByPrecio: async(_, {precio}, {dataSources}) =>{
+        postByPrecio: async(_, {precio}, {dataSources, userIdToken}) =>{
             return await dataSources.postAPI.postByPrecio(precio);
         },
+
+        postRecipientCiudad: async(_, {}, {dataSources, userIdToken}) =>{
+            return await dataSources.postAPI.RecipientCiudad();
+        },
+
+        postRecipientPrecio: async(_, {}, {dataSources, userIdToken}) =>{
+            return await dataSources.postAPI.RecipientPrecio();
+        }
     },
 
     Mutation: {
