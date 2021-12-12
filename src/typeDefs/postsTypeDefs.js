@@ -5,10 +5,19 @@ const postTypes = gql `
         idPost              :String!
         area                :String!
         ciudad              :String!
+        imagen              :String!
         descripcionServicio :String!
         fechaPublicacion    :String!
         precio              :Int!
         username            :String!     
+    }
+
+    type RecipientCiudad {
+        ciudad              :String!
+    }
+
+    type RecipientPrecio {
+        precio              :Int!
     }
 
     input PostInput {
@@ -17,6 +26,7 @@ const postTypes = gql `
         descripcionServicio :String!
         precio              :Int! 
         username            :String! 
+        imagen              :String!
     }
 
     input PostUpdate {
@@ -26,9 +36,10 @@ const postTypes = gql `
         descripcionServicio :String!
         precio              :Int!
         username            :String! 
-
-          
+        imagen              :String!     
     }
+
+
 
     extend type Query{
         postByAll:[Post]
@@ -37,6 +48,11 @@ const postTypes = gql `
         postByArea(area:String!):[Post]
         postByLugar(ciudad:String!):[Post]
         postByPrecio(precio:Int!):[Post]
+
+
+        postRecipientCiudad:[String]
+        postRecipientPrecio:[Int]
+
     }
 
     extend type Mutation{
